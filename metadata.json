@@ -1,0 +1,8 @@
+{
+  "name": "Remix: GameLoren",
+  "description": "Android Launcher for RPG Maker MV/MZ - Play PC RPG Maker games on mobile with virtual keys, code conflict resolution, performance optimization, and external game directory scanning.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}

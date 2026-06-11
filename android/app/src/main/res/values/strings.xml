@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">RPG Launcher</string>
+    <string name="title_activity_main">RPG Launcher</string>
+    <string name="package_name">com.rpg.launcher</string>
+    <string name="custom_url_scheme">com.rpg.launcher</string>
+</resources>

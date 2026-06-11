@@ -1,0 +1,48 @@
+name: Generate APK Automatically
+
+on:
+  push:
+    branches: [ main, master ] # Jab aap code push karenge tab chalega
+
+jobs:
+  android-build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Install Dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Build Web Frontend
+        run: npm run build
+
+      - name: Setup Java 17
+        uses: actions/setup-java@v4
+        with:
+          distribution: 'zulu'
+          java-version: '17'
+
+      - name: Fix Capacitor Platform Link
+        run: |
+          npx cap add android || echo "Platform already added or skipped"
+
+      - name: Sync Capacitor Android
+        run: |
+          npx cap sync android
+
+      - name: Build Debug APK
+        run: |
+          cd android
+          ./gradlew assembleDebug
+
+      - name: Save APK File
+        uses: actions/upload-artifact@v4
+        with:
+          name: Universal-RPG-Player-APK
+          path: android/app/build/outputs/apk/debug/app-debug.apk
