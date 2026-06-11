@@ -27,7 +27,7 @@ jobs:
         uses: actions/setup-java@v4
         with:
           distribution: 'zulu'
-          java-version: '21' # Java 17 ko badal kar 21 kar diya taake compile error khatam ho jaye
+          java-version: '21'
 
       - name: Fix Capacitor Platform Link
         run: |
@@ -41,7 +41,7 @@ jobs:
         run: |
           cd android
           chmod +x gradlew
-          ./gradlew assembleDebug -X lint:none
+          ./gradlew assembleDebug
 
       - name: Save APK File
         uses: actions/upload-artifact@v4
